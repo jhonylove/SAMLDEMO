@@ -1,0 +1,35 @@
+:root {
+
+    /*parejas de gradientes*/
+    --mediumturquoise: #1A49F8;
+    --mediumturquoise_rgba: rgba(26,73,248,1);
+    /*parejas de gradientes*/
+    --tiffanyblue: #1D4CCB;
+    --tiffanyblue_rgba: rgba(29,76,203,1);
+    --middleblue2: #1A49F8;
+    --middleblue2_rgba: rgba(26,73,248,1);
+    /*parejas de gradientes*/
+
+
+    --color1: var(--tiffanyblue) !important;
+    --color2: var(--mediumturquoise) !important;
+    --color1_border_rgba: var(--tiffanyblue_rgba) !important;
+    --color2rgba: var(--middleblue2_rgba) !important;
+    --whitecustom: #fff !important;
+    --bodybackground: #fafafa !important;
+}
+.color1{
+    color: var(--color1);
+}
+.color2{
+    color: var(--color2);
+}
+.bg-color1 {
+    background-color: var(--color1) !important
+}
+.bg-color2 {
+    background-color: var(--color2) !important
+}
+.bg-middleblue2{
+    background-color: var(--middleblue2) !important
+}

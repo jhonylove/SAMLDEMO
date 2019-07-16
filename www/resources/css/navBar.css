@@ -1,0 +1,76 @@
+.btn{
+font-size: 13px;
+}
+.form-control{
+font-size: 13px;
+}
+.btn-outline-tiffanyblue {
+    background: var(--color1);
+    color: white;
+    border-color: white
+}
+.dropdown-navbar>a{
+    font-size: .9rem !important;
+}
+/*overriding bootstrap navbar styles*/
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show > .nav-link {
+    color: white;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(239, 239, 239, 0.75);
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+}
+.navbar-light .navbar-brand {
+    color: rgb(222, 222, 222);
+}
+.navbar-light .navbar-brand:hover  {
+    color: white;
+}
+.dropdown-icon{
+    margin-right: 5px;
+}
+#navbarSupportedContent{
+    padding: 15px 10px;
+    background-color: var(--color1) !important;
+
+    /*background: #fff;*/
+    /*color: white !important;*/
+    border: none;
+    border-radius: 0;
+    /*margin-bottom: 40px;*/
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: .9rem !important;
+}
+.page-title {
+    padding: 0px;
+    font-size: 30px;
+    letter-spacing: -1px;
+    display: block;
+    color: #666;
+    margin: 0px 0px 0px 0px;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    /*border-bottom: solid thin;*/
+    /*border-color: #07beb8;*/
+}
+.page-title small {
+    font-size: 14px;
+    letter-spacing: 0px;
+    font-weight: 300;
+    color: #888;
+}
+.page-title a {
+    color: #888 !important;
+}
+.page-title a:hover {
+    color: var(--color1) !important;
+    cursor: pointer;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    color: #666;
+}

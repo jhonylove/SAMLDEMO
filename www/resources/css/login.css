@@ -1,0 +1,82 @@
+/* A link that has not been visited */
+a:link {
+    color: green;
+}
+
+/* A link that has been visited */
+a:visited {
+    color: white;
+}
+
+/* A link that is hovered on */
+a:hover {
+    color: white;
+}
+
+/* A link that is selected */
+a:active {
+    color: green;
+}
+body {
+    background: #1D4CCB;
+    /*background-image: url(../img/teamworkgauss.png);*/
+    /*background: #f7f7f7;*/
+    color: grey !important;
+
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+
+    /* Background image is fixed in the viewport so that it doesn't move when
+       the content's height is greater than the image's height */
+    background-attachment: fixed;
+
+    /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: cover;
+
+    /* Set a background color that will be displayed
+       while the background image is loading */
+    /*background-color: #464646;*/
+
+    background-size: cover;
+    /*background: linear-gradient(to right, #0c5460, #1c7430);*/
+}
+/*input{*/
+/*color: grey !important;*/
+/*}*/
+.login-form {
+    width: 340px;
+    margin: 50px auto;
+}
+.login-form form {
+    /*background: linear-gradient(to right, #68D8D6, #07BEB8);*/
+    /*background: linear-gradient(to right, #07BEB8, #68D8D6);*/
+    background: rgba(136, 130, 125, 0.1);
+
+    margin-bottom: 15px;
+    /*background: #f7f7f7;*/
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+.login-form h2 {
+    margin: 0 0 15px;
+}
+.form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+.btn {
+    font-size: 15px;
+    font-weight: bold;
+}
+.logo{
+    margin-left: 5%;
+}
+input:focus {
+    outline: none !important;
+    border:1px solid red;
+    box-shadow: 0 0 10px #1D4CCB !important;
+}
