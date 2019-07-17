@@ -1,6 +1,10 @@
 <?php
 
 $config = [
+    'example' => array(
+        'saml:SP',
+        'idp' => 'http://localhost/mts/branches/dvlp/web/administrative/admin_inswitch/Admin/index.php',
+    ),
     'myauthinstance' => [
         'mymodule:MyAuth',
         'dsn' => 'pgsql:host=localhost;port=5432;dbname=saml',
@@ -68,6 +72,7 @@ $config = [
         'example-pgsql' => [
         'sqlauth:SQL',
         'dsn' => 'pgsql:host=localhost;port=5432;dbname=saml',
+        'customClass' => 'PGSQL',
         'username' => 'postgres',
         'password' => 'postgres',
 //        'query' => 'SELECT uid, givenName, email, eduPersonPrincipalName FROM users WHERE uid = :username AND password = SHA2(CONCAT((SELECT salt FROM users WHERE uid = :username), :password), 256);',

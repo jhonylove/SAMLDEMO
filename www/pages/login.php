@@ -55,26 +55,14 @@ if($controller->checklogin('myauthinstance')) {
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="pass"><i class="fas fa-wine-glass"></i></span>
+                <span class="input-group-text" id="pass"><i class="fas fa-folder"></i></span>
             </div>
             <select name="idp" class="form-control" id="exampleFormControlSelect1" required>
               <option>myauthinstance</option>
               <option>default-sp</option>
               <option>example-oci8</option>
               <option>example-pgsql</option>
-            </select>
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="pass"><i class="fas fa-wine-glass"></i></span>
-            </div>
-            <select name="sp" class="form-control" id="exampleFormControlSelect1" required>
-              <option>Select SP....</option>
-              <option>WEB ADMIN</option>
-              <option>WEB AGENTES</option>
-              <option>ANTEL APP</option>
-              <option>NACION</option>
-              <option>TIGO</option>
+              <option>example</option>
             </select>
         </div>
         <div class="form-group">

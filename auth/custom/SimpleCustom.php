@@ -62,7 +62,7 @@ class SimpleCustom extends \SimpleSAML\Auth\Simple
         }
 
         $as = $this->getAuthSource();
-
+        var_dump($as);die;
         return $as->initLogin($returnTo, $errorURL, $params);
 //        var_dump($RETURN);die;
 //        assert(false);

@@ -25,6 +25,56 @@ class SAMLHandler extends \SimpleSAML\Auth\Source
     private $password;
     private $options;
 
+    /**
+     * The string used to identify our states.
+     */
+    const STAGEID = '\SimpleSAML\Module\mymodule\Auth\Source\MyAuth.state';
+
+    /**
+     * The key of the AuthId field in the state.
+     */
+    const AUTHID = '\SimpleSAML\Module\mymodule\Auth\Source\MyAuth.AuthId';
+
+    /**
+     * Links to pages from login page.
+     * From configuration
+     */
+    protected $loginLinks;
+
+    /**
+     * Storage for authsource config option remember.username.enabled
+     * loginuserpass.php and loginuserpassorg.php pages/templates use this option to
+     * present users with a checkbox to save their username for the next login request.
+     * @var bool
+     */
+    protected $rememberUsernameEnabled = false;
+
+    /**
+     * Storage for authsource config option remember.username.checked
+     * loginuserpass.php and loginuserpassorg.php pages/templates use this option
+     * to default the remember username checkbox to checked or not.
+     * @var bool
+     */
+    protected $rememberUsernameChecked = false;
+
+    /**
+     * Storage for general config option session.rememberme.enable.
+     * loginuserpass.php page/template uses this option to present
+     * users with a checkbox to keep their session alive across
+     * different browser sessions (that is, closing and opening the
+     * browser again).
+     * @var bool
+     */
+    protected $rememberMeEnabled = false;
+
+    /**
+     * Storage for general config option session.rememberme.checked.
+     * loginuserpass.php page/template uses this option to default
+     * the "remember me" checkbox to checked or not.
+     * @var bool
+     */
+    protected $rememberMeChecked = false;
+
     public function __construct($info, $config) {
         parent::__construct($info, $config);
 
@@ -95,7 +145,9 @@ class SAMLHandler extends \SimpleSAML\Auth\Source
         if (!$row) {
             /* User not found. */
             \SimpleSAML\Logger::warning('MyAuth: Could not find user ' . var_export($username, TRUE) . '.');
-            throw new \SimpleSAML\Error\Error('WRONGUSERPASS');
+            HTTP::redirectTrustedURL('http://localhost/SAMLDEMO/www/pages/login.php?&msg=badcredentials',$_POST);
+
+//            throw new \SimpleSAML\Error\Error('WRONGUSERPASS');
         }
 
         /* Check the password. */
@@ -117,90 +169,7 @@ class SAMLHandler extends \SimpleSAML\Auth\Source
         /* Return the attributes. */
         return $attributes;
     }
-
-    /**
-     * @return string
-     */
-    public function get_dsn()
-    {
-        return $this->dsn;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUser()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @return string
-     */
-    public function get_password()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @return array
-     */
-    public function get_options()
-    {
-        return $this->options;
-    }
-
-
-    /**
-     * The string used to identify our states.
-     */
-    const STAGEID = '\SimpleSAML\Module\mymodule\Auth\Source\MyAuth.state';
-
-    /**
-     * The key of the AuthId field in the state.
-     */
-    const AUTHID = '\SimpleSAML\Module\mymodule\Auth\Source\MyAuth.AuthId';
-
-    /**
-     * Links to pages from login page.
-     * From configuration
-     */
-    protected $loginLinks;
-
-    /**
-     * Storage for authsource config option remember.username.enabled
-     * loginuserpass.php and loginuserpassorg.php pages/templates use this option to
-     * present users with a checkbox to save their username for the next login request.
-     * @var bool
-     */
-    protected $rememberUsernameEnabled = false;
-
-    /**
-     * Storage for authsource config option remember.username.checked
-     * loginuserpass.php and loginuserpassorg.php pages/templates use this option
-     * to default the remember username checkbox to checked or not.
-     * @var bool
-     */
-    protected $rememberUsernameChecked = false;
-
-    /**
-     * Storage for general config option session.rememberme.enable.
-     * loginuserpass.php page/template uses this option to present
-     * users with a checkbox to keep their session alive across
-     * different browser sessions (that is, closing and opening the
-     * browser again).
-     * @var bool
-     */
-    protected $rememberMeEnabled = false;
-
-    /**
-     * Storage for general config option session.rememberme.checked.
-     * loginuserpass.php page/template uses this option to default
-     * the "remember me" checkbox to checked or not.
-     * @var bool
-     */
-    protected $rememberMeChecked = false;
-
+    
     public function authenticate(&$state)
     {
         assert(is_array($state));
@@ -330,6 +299,38 @@ class SAMLHandler extends \SimpleSAML\Auth\Source
          * If we need to do a redirect to a different page, we could do this
          * here, but in this example we don't need to do this.
          */
+    }
+
+    /**
+     * @return string
+     */
+    public function get_dsn()
+    {
+        return $this->dsn;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUser()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @return string
+     */
+    public function get_password()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @return array
+     */
+    public function get_options()
+    {
+        return $this->options;
     }
 
 }

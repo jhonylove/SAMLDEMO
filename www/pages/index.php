@@ -4,8 +4,8 @@ use \Controllers\loginController;
 use SimpleSAML\Utils\HTTP;
 
 $controller= new loginController();
-if($controller->checklogin('myauthinstance')){
-    echo'<!DOCTYPE html>
+if($controller->checklogin($_POST['idp'])){
+echo'<!DOCTYPE html>
 <html>
 
 <head>
@@ -72,7 +72,7 @@ if($controller->checklogin('myauthinstance')){
                         <ul class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="'.\SimpleSAML\Utils\HTTP::addURLParameters('http://localhost/SAML/smplphpdemo/pages/logout.php',$_GET).'">Logout</a>
+                            <a class="dropdown-item" href="'.\SimpleSAML\Utils\HTTP::addURLParameters('http://localhost/SAMLDEMO/www/pages/logout.php',$_GET).'">Logout</a>
                         </ul>
                     </li>
                 </ul>
@@ -107,7 +107,8 @@ Detalles <small>de la autenticacion</small>
 
                     <h2>Atribute</h2>';
 //                    foreach (base64_decode($_GET['a']) as $a){
-    echo '<p>'.var_dump($_GET['state']).'</p>';
+//    echo '<p>'.var_dump($_GET['state']['Attributes']).'</p>';
+    echo '<p>'.var_dump($_GET['authdata']).'</p>';
 //                    }
     echo '
 
@@ -126,10 +127,7 @@ Detalles <small>de la autenticacion</small>
             </div>
 
         </div>
-    </div>
-
     <!-- Footer  -->
-</div>
 <footer id="footer" class="bg-tiffanyblue">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
@@ -137,6 +135,8 @@ Detalles <small>de la autenticacion</small>
         </div>
     </div>
 </footer>
+    </div>
+</div>
 <script src="../resources/js/jquery-3.4.1.min.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
 </body>
