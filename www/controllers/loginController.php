@@ -8,6 +8,7 @@
 
 namespace Controllers;
 use Auth\Custom\SimpleCustom;
+use Auth\SAMLHandler;
 use SimpleSAML\Configuration;
 use SimpleSAML\Utils\HTTP;
 
@@ -18,6 +19,8 @@ class loginController
     private $config;
 
     private $configpath=ROOT.DS.'config';
+
+    private $authsource;
     /**
      * loginController constructor.
      */
@@ -30,8 +33,9 @@ class loginController
 
     function login($request){
 //            $as = new SimpleCustom('myauthinstance',$this->config);
+        $this->authsource=$_POST['idp'];
 
-        $as = new SimpleCustom($_POST['idp'],$this->config);
+        $as = new SAMLHandler($this->authsource,$this->config);
         $user=$_POST['username'];
         $pass=$_POST['password'];
         $idp=$_POST['idp'];
@@ -51,7 +55,7 @@ class loginController
     }
 
     function checklogin($idsource){
-        $auth = new SimpleCustom($idsource,$this->config);
+        $auth = new SAMLHandler($idsource,$this->config);
         if (!$auth->isAuthenticated()) {
             return false;
         }
@@ -65,7 +69,7 @@ class loginController
      */
     public function logout($request)
     {
-        $auth = new SimpleCustom('myauthinstance',$this->config);
+        $auth = new SAMLHandler($request['idp'],$this->config);
         $auth->logout('http://localhost/SAMLDEMO/www/pages/login.php');
         return $this->config;
     }

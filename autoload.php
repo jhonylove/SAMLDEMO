@@ -8,11 +8,13 @@ define('DS', DIRECTORY_SEPARATOR);
 spl_autoload_register(function ($class) {
     static $map = array (
         'Auth\\Custom\\MyAuth' => 'auth/custom/MyAuth.php',
-        'Auth\\Custom\\SAMLHandler' => 'auth/custom/SAMLHandler.php',
         'Auth\\Custom\\SimpleCustom' => 'auth/custom/SimpleCustom.php',
+        'Auth\\Facebook\\Facebook' => 'auth/facebook/Facebook.php',
+        'Auth\\Ldap\\LDAP' => 'auth/ldap/LDAP.php',
+        'Auth\\Pgsql\\PGSQL' => 'auth/pgsql/PGSQL.php',
+        'Auth\\Oci8\\oci8' => 'auth/oci8/oci8.php',
+        'Auth\\SAMLHandler' => 'auth/SAMLHandler.php',
         'Controllers\\loginController' => 'www/controllers/loginController.php',
-        'Project\\Class2' => 'lots of classes.php',
-        'Project\\Class3' => 'lots of classes.php',
     );
 
     if (isset($map[$class])) {

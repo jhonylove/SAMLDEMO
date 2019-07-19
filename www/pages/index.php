@@ -4,7 +4,7 @@ use \Controllers\loginController;
 use SimpleSAML\Utils\HTTP;
 
 $controller= new loginController();
-if($controller->checklogin($_POST['idp'])){
+if($controller->checklogin($_GET['idp'])){
 echo'<!DOCTYPE html>
 <html>
 

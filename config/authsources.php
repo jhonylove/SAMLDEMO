@@ -10,6 +10,7 @@ $config = [
         'dsn' => 'pgsql:host=localhost;port=5432;dbname=saml',
         'username' => 'postgres',
         'password' => 'postgres',
+        'handler'=>'saml'
     ],
     // This is a authentication source which handles admin authentication.
     'admin' => [
@@ -75,6 +76,8 @@ $config = [
         'customClass' => 'PGSQL',
         'username' => 'postgres',
         'password' => 'postgres',
+        'handler'=>'pqsql',
+
 //        'query' => 'SELECT uid, givenName, email, eduPersonPrincipalName FROM users WHERE uid = :username AND password = SHA2(CONCAT((SELECT salt FROM users WHERE uid = :username), :password), 256);',
         'query' => 'SELECT username, name, email FROM users WHERE username = :username AND password = :password;',
     ],
@@ -83,6 +86,7 @@ $config = [
         'dsn' => 'oci:dbname=//192.168.1.220:1521/romanuel_mts_60',
         'username' => 'romanuel_mts_60',
         'password' => 'inswitch',
+        'handler'=>'oci8',
         'query' => 'SELECT 
               U.USER_ID, 
               U.USER_NAME, 
