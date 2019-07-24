@@ -2,10 +2,11 @@
 require_once ('../../autoload.php');
 use \Controllers\loginController;
 use SimpleSAML\Utils\HTTP;
-
 $controller= new loginController();
 if($controller->checklogin($_GET['idp'])){
-echo'<!DOCTYPE html>
+    var_dump($_SESSION);
+
+    echo'<!DOCTYPE html>
 <html>
 
 <head>
