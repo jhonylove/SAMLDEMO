@@ -63,6 +63,7 @@ if($controller->checklogin('myauthinstance')) {
               <option>example-oci8</option>
               <option>example-pgsql</option>
               <option>example</option>
+              <option>facebook</option>
             </select>
         </div>
         <div class="form-group">

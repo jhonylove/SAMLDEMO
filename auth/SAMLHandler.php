@@ -83,7 +83,7 @@ class SAMLHandler extends \SimpleSAML\Auth\Simple
 
         if(isset($source_config['handler'])){
             $handler_auth=$this->getCustomHandler($source_config['handler'],$source_config);
-            $handler_auth->initLogin($returnTo, $errorURL, $params);
+            return $handler_auth->initLogin($returnTo, $errorURL, $params);
         }else{
             $auth = $this->getAuthSource();
             return $auth->initLogin($returnTo, $errorURL, $params);

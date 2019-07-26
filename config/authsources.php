@@ -113,6 +113,22 @@ $config = [
               LEFT JOIN SUBSCRIBER S ON SU.SUBSCRIBER_ID = S.SUBSCRIBER_ID
               WHERE U.USER_ID = :username AND password = :password;',
     ],
+    'facebook' => [
+        'authfacebook:Facebook',
+        // Register your Facebook application on http://www.facebook.com/developers
+        // App ID or API key (requests with App ID should be faster; https://github.com/facebook/php-sdk/issues/214)
+        'api_key' => '2347428345351303',
+        // App Secret
+        'secret' => '80b1a15c832ef15c0962668979f529c7',
+        // which additional data permissions to request from user
+        // see http://developers.facebook.com/docs/authentication/permissions/ for the full list
+        //'req_perms' => 'email,user_birthday',
+        // Which additional user profile fields to request.
+        // When empty, only the app-specific user id and name will be returned
+        // See https://developers.facebook.com/docs/graph-api/reference/v2.6/user for the full list
+        'user_fields' => 'email,birthday,third_party_id,name,first_name,last_name',
+        'handler' => 'facebook',
+    ],
 
 
     /*

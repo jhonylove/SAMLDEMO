@@ -2,9 +2,17 @@
 require_once ('../../autoload.php');
 use \Controllers\loginController;
 use SimpleSAML\Utils\HTTP;
+//var_dump($_GET);die;
+
+if(isset($_GET['SESSION'])){
+    $_SESSION=unserialize(base64_decode($_GET['SESSION']));
+}
 $controller= new loginController();
-if($controller->checklogin($_GET['idp'])){
-    var_dump($_SESSION);
+//var_dump($controller->checklogin('facebook'));die;
+//var_dump($_GET);die;
+//if($controller->checklogin($_GET['idp'])){
+//if($controller->checklogin('facebook')){
+//    var_dump($_SESSION);
 
     echo'<!DOCTYPE html>
 <html>
@@ -142,6 +150,6 @@ Detalles <small>de la autenticacion</small>
 <script src="../resources/js/bootstrap.min.js"></script>
 </body>
 </html>';
-}else{
-    HTTP::redirectTrustedURL('http://localhost/SAMLDEMO/www/pages/login.php');
-}
+//}else{
+//    HTTP::redirectTrustedURL('http://localhost/SAMLDEMO/www/pages/login.php');
+//}

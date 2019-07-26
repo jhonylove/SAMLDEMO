@@ -41,8 +41,8 @@ class loginController
         $idp=$_POST['idp'];
 //        $sp=$_POST['sp'];
         $params=['ErrorURL'=>'http://localhost/SAMLDEMO/www/pages/login.php?&msg=badcredentials',
-                     'ReturnTo'=>'http://localhost/SAMLDEMO/www/pages/index.php?username='.$user.'&password='.$pass.'&idp='.$idp,
-//            'ReturnTo'=>'http://localhost/SAMLDEMO/smplphpdemo/controllers/loginHandler.php',
+//                     'ReturnTo'=>'http://localhost/SAMLDEMO/www/pages/index.php?username='.$user.'&password='.$pass.'&idp='.$idp,
+            'ReturnTo'=>'http://localhost/SAMLDEMO/www/pages/index.php',
                  'KeepPost' => true];
 //            $as->requireAuth($params);
 //        var_dump($as);die;
@@ -52,6 +52,17 @@ class loginController
         $_POST['authdata']=$authdata;
         HTTP::redirectTrustedURL('http://localhost/SAMLDEMO/www/pages/index.php',$_POST);
 
+    }
+    public static function finishLogin($request){
+
+//        $authdata=$as->getAuthDataArray();
+        $_POST['state']=$request;
+        $_POST['authdata']=$request['Attributes'];
+//        $_POST['SESSION']=base64_encode(serialize($_SESSION));
+        $url=HTTP::addURLParameters('http://localhost/SAMLDEMO/www/pages/index.php',$_POST);
+
+
+        HTTP::redirectTrustedURL($url);
     }
 
     function checklogin($idsource){
